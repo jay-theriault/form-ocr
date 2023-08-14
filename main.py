@@ -2,6 +2,7 @@
 import numpy as np 
 import pandas as pd 
 import numpy as np
+import sys
 
 # non-standard imports
 import cv2
@@ -15,7 +16,10 @@ from crop import crop_text_region
 
 if __name__ == '__main__':
     
-    image_path = "Images/Image_1.jpg"
+    try:
+        image_path = sys.argv[1]
+    except IndexError as e:
+        image_path = "Images/Image_1.jpg"
     
     # Load and preprocess image
     img = load_image_and_preprocess(image_path)
